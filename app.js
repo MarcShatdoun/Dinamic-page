@@ -33,11 +33,27 @@ app.get("/:pepe",(req, res)=>{
 })
 
 
-// app.get('/', (req, res) => {
+app.get('/', (req, res) => {
 
-//     const datosRuta = travelJSON
+    const datosRuta = travelJSON
+
+    let menuValues = "";
+    travelJSON.forEach(menu => {   
+                 menuValues += `<a href="${menu.id}">${menu.lugar}</a>`
+             })
+
+  
+    res.render(`${datosRuta[0].id}`, {
+        title: datosRuta[0].lugar,
+        h2: datosRuta[0].subtitulo,
+        parrafo: datosRuta[0].nombre,
+        precio: datosRuta[0].precio,
+        img: datosRuta[0].img,
+        menu: menuValues,
+        descripcion: datosRuta[0].descripcion
+    })
     
-// });
+});
 
 
 // app.get('/maldivas', (req, res) => {
